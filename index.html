@@ -1,0 +1,414 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="keywords" content="Distribution-Aware Coordinate Representation for Human Pose Estimation">
+    <meta name="description" content="Distribution-Aware Coordinate Representation for Human Pose Estimation">
+    <!--<link href="CSS/bootstrap.min.css" media="all" rel="stylesheet">-->
+    <link href="./DCAR_files/main.css" media="all" rel="stylesheet">
+    <title>Distribution-Aware Coordinate Representation for Human Pose Estimation</title>
+    <style>
+        font.italic {
+            font-style: italic;
+        }
+
+        .isDisabled {
+            pointer-events: none;
+            cursor: default;
+            text-decoration: none;
+            color: black;
+        }
+
+        .lightfont {
+            font-size: medium;
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <section id="headinformation" class="sectionwhite">
+        <table id="tbInformation" width="100%">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <h1>Distribution-Aware Coordinate Representation for Human Pose Estimation </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        Feng Zhang<sup>1</sup> &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.eecs.qmul.ac.uk/~xiatian/" target="_blank">Xiatian Zhu<sup>2</sup></a>
+                        &nbsp;&nbsp;&nbsp; Hanbin Dai<sup>1</sup> &nbsp;&nbsp;&nbsp;
+                        <a href="http://en.uestc.edu.cn/index.php?m=content&c=index&a=show&catid=79&id=5422"
+                            target="_blank">Mao Ye<sup>1</sup></a> &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.avc2-lab.net/~eczhu/" target="_blank">Ce Zhu<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
+
+                        <p align="center">
+                            <small>
+                                &nbsp;1.University of Electronic Science and Technology of China;
+                                &nbsp;2.University of Surrey
+                            </small>
+                        </p>
+
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <img src="./DCAR_files/DACR.png" border="12" height="200">
+                        <!--    <img src="images/Exchange.png" border="0" height="200">-->
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="Abstract" class="sectionwhite">
+        <h3> Abstract </h3>
+        <font size="normal">
+            <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+                <tbody>
+                    <tr>
+                        <td align="left">
+                            &nbsp;&nbsp;&nbsp;&nbsp; While being the <em>de facto</em> standard coordinate
+                            representation in human pose estimation, <em>heatmap</em> is never systematically
+                            investigated in the literature, to our best knowledge.
+                            </br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; This work fills this gap by studying the coordinate representation
+                            with a particular focus on the heatmap. Interestingly, we found that the process of
+                            <em>decoding</em> the predicted heatmaps into the
+                            final joint coordinates in the original image space is
+                            <em>surprisingly significant</em> for human pose estimation performance, which nevertheless
+                            was not recognised before. In light of the discovered importance, we further probe the
+                            design limitations of the standard coordinate
+                            decoding method widely used by existing methods, and propose a more principled
+                            distribution-aware decoding method. Meanwhile, we improve the standard coordinate <em>
+                                encoding </em> process (i.e. transforming ground-truth coordinates
+                            to heatmaps) by generating accurate heatmap distributions for unbiased model training.
+                            Taking the two together, we formulate a novel <em> Distribution-Aware Coordinate
+                                Representation </em> (DACR) method. Serving as a model-agnostic
+                            plug-in, DACR significantly improves the performance of a variety of state-of-the-art human
+                            pose estimation models.
+                            </br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; Extensive experiments show that DACR yields the best results on two
+                            common benchmarks, MPII and COCO, consistently validating the usefulness and effectiveness
+                            of our novel coordinate representation idea.
+                            <!-- <b><p>&nbsp;&nbsp;&nbsp;&nbsp;We will release the paper, training and testing code and the pretrained model at GitHub.</p></b> -->
+                            <!-- <b><p>&nbsp;&nbsp;&nbsp;&nbsp;Our CVPR2019 work <em>Fast Human Pose Estimation</em> can work seamlessly with DACR, which is available at<a href="https://github.com/ilovepose/fast-human-pose-estimation.pytorch"> GitHub</a>. -->
+                            </p></b>
+                            </br>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td align="left">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We propose a high-resolution network (HRNet). The HRNet maintains high-resolution representations by connecting high-to-low resolution convolutions in parallel and strengthens high-resolution representations by repeatedly
+                            performing multi-scale fusions across parallel convolutions. We demonstrate the effectives on pixel-level classification, region-level classification, and image-level classification.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <font color="blue">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The HRNet turns out to be a strong repalcement of classification networks (e.g., ResNets, VGGNets) for visual recognition. We believe that the HRNet will become the new standard backbone.
+                            </font>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </font>
+    </section>
+
+    <SECTION id="Paper" class="sectionwhite">
+        <h3> Paper</h3>
+        <font size="normal">
+            <table cellpadding=0 cellspacing=0 width="100%" class="sectionwhite">
+                <tr>
+                    <td align="left">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coming soon.
+                        <!-- <A href="https://arxiv.org/pdf/1902.09212.pdf" target="_blank">
+                <img src="images/PoseEstimation/paper001.jpg" style="border:1px solid black" width="15.5%"></A>
+                <A href="https://arxiv.org/pdf/1902.09212.pdf" target="_blank">
+                <img src="images/PoseEstimation/paper002.jpg" style="border:1px solid black"  width="15.5%"></A>
+                <A href="https://arxiv.org/pdf/1902.09212.pdf" target="_blank">
+                <img src="images/PoseEstimation/paper003.jpg" style="border:1px solid black"  width="15.5%"></A>
+                <A href="https://arxiv.org/pdf/1902.09212.pdf" target="_blank">
+                <img src="images/PoseEstimation/paper004.jpg" style="border:1px solid black"  width="15.5%"></A>
+                <A href="https://arxiv.org/pdf/1902.09212.pdf" target="_blank">
+                <img src="images/PoseEstimation/paper005.jpg" style="border:1px solid black"  width="15.5%"></A>
+                <A href="https://arxiv.org/pdf/1902.09212.pdf" target="_blank">
+                <img src="images/PoseEstimation/paper006.jpg" style="border:1px solid black"  width="15.5%"></A>
+                <A href="https://arxiv.org/pdf/1902.09212.pdf" target="_blank"> -->
+                        <!-- paper</A> -->
+                    </td>
+                </TR>
+                <TR>
+                    <td></td>
+                </TR>
+                <TR>
+                    <td></td>
+                </TR>
+                <TR>
+                    <td></td>
+                </TR>
+            </table>
+        </font>
+    </SECTION>
+
+    <SECTION id="Code" class="sectionwhite">
+        <h3> Code</h3>
+        <font size="normal">
+            <table cellpadding=3 cellspacing=0 width="100%" class="sectionwhite">
+                <tr>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We will release the paper, training and testing code and the
+                        pretrained model at GitHub.
+                        </br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Our CVPR2019 work <em>Fast Human Pose Estimation</b></em> can work
+                        seamlessly with <b><em>DACR</em></b>, which is available at<a
+                            href="https://github.com/ilovepose/fast-human-pose-estimation.pytorch"> GitHub</a>.
+                <TR>
+                    <td></td>
+                </TR>
+                <TR>
+                    <td></td>
+                </TR>
+                <TR>
+                    <td></td>
+                </TR>
+            </table>
+        </font>
+    </SECTION>
+
+    <hr />
+
+    <section id="COCO 2019 Keypoint Detection" class="sectionwhite">
+        <tr>
+            <h2 style="text-align: center;">COCO 2019 Keypoint Detection Challenge</h2>
+            <td>
+                <p align="center">
+                    Hanbin Dai<sup>1</sup>* &nbsp;&nbsp;&nbsp; Liangbo Zhou<sup>1</sup>* &nbsp;&nbsp;&nbsp; Feng
+                    Zhang<sup>1</sup>* &nbsp;&nbsp;&nbsp; Hong Hu<sup>1</sup>* &nbsp;&nbsp;&nbsp; Zhengyu
+                    Zhang<sup>2</sup>* &nbsp;&nbsp;&nbsp;
+                    <a href="http://www.eecs.qmul.ac.uk/~xiatian/" target="_blank">Xiatian Zhu<sup>3</sup>*</a>
+                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                    <a href="http://en.uestc.edu.cn/index.php?m=content&c=index&a=show&catid=79&id=5422"
+                        target="_blank">Mao Ye<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
+                </p>
+                <p align="center">
+                    <small>
+                        * means equal contribution;
+                        &nbsp;1.University of Electronic Science and Technology of China;
+                        &nbsp;2.Shenzhen University;
+                        &nbsp;3.University of Surrey
+                    </small>
+                </p>
+            </td>
+        </tr>
+
+        <p align="left">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We use DACR in the COCO 2019 Keypoint Detection Challenge. Our method achieve
+            AP <b>78.9</b> on the COCO test-dev set and <b>76.4</b> on the COCO test-challenge set matching the
+            performance of Megvii's AP (the 2018 COCO champion).
+        </p>
+
+        <h3>Visualization</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We give four types of challenges: images containing invisible joints, images
+        containing low-resolution persons, images having crowd scenes, images containing partial parts.
+        <h3>Invisible joints</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/invisible/000000000202.jpg" target="_blank">
+                            <img src="./vis/invisible/000000000202.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/invisible/000000539688.jpg" target="_blank">
+                            <img src="./vis/invisible/000000539688.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/invisible/000000023321.jpg" target="_blank">
+                            <img src="./vis/invisible/000000023321.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/invisible/000000568798.jpg" target="_blank">
+                            <img src="./vis/invisible/000000568798.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+
+        <h3>Low resolution</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/low_res/000000550343.jpg" target="_blank">
+                            <img src="./vis/low_res/000000550343.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/low_res/000000562105.jpg" target="_blank">
+                            <img src="./vis/low_res/000000562105.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/low_res/000000320571.jpg" target="_blank">
+                            <img src="./vis/low_res/000000320571.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/low_res/000000318447.jpg" target="_blank">
+                            <img src="./vis/low_res/000000318447.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+
+        <h3>Crowd scene</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/crowd/000000001551.jpg" target="_blank">
+                            <img src="./vis/crowd/000000001551.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/crowd/000000122502.jpg" target="_blank">
+                            <img src="./vis/crowd/000000122502.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/crowd/000000555817.jpg" target="_blank">
+                            <img src="./vis/crowd/000000555817.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/crowd/000000567412.jpg" target="_blank">
+                            <img src="./vis/crowd/000000567412.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+
+        <h3>Partial parts</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/partial/000000568601.jpg" target="_blank">
+                            <img src="./vis/partial/000000568601.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/partial/000000311775.jpg" target="_blank">
+                            <img src="./vis/partial/000000311775.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/partial/000000319940.jpg" target="_blank">
+                            <img src="./vis/partial/000000319940.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/partial/000000313987.jpg" target="_blank">
+                            <img src="./vis/partial/000000313987.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+    </section>
+
+
+    <section id="Citation" class="sectionwhite">
+        <h3> Citation</h3>
+    </SECTION>
+    <SECTION id="Citation" width="60%" class="sectiongray">
+        <table cellpadding=3 cellspacing=0 width="60%" class="sectiongray">
+            <TR>
+                <TD>
+                    <pre><code>@inproceedings{Feng2020,
+              title={Distribution-Aware Coordinate Representation for Human Pose Estimation},
+              author={Feng Zhang and Xiatian Zhu and Hanbin Dai and Mao Ye and Ce Zhu}
+            }
+            <!-- booktitle={AAAI},
+            year={2020} -->
+            </TD></TR>
+            </code></pre>
+        </table>
+    </SECTION>
+
+
+    <section id="Contact" class="sectionwhite">
+        <h3> Contact</h3>
+        <p align="left">
+            <a href="mailto:zhangfengwcy@gmail.com"> Feng Zhang</a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:eddy.zhuxt@gmail.com"> Xiatian Zhu</a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:daihanbin.ac@gmail.com"> Hanbin Dai</a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:Andrewhuhong@gmail.com"> Hong Hu</a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:heathhose96@gmail.com"> Liangbo </a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:zhengyuzhang23@outlook.com"> Zhengyu Zhang </a>&nbsp;&nbsp;&nbsp;
+            <!-- <a href=" mailto:eddy.zxt@gmail.com "> Hanbin Dai</a> -->
+
+            <a href="www.ilovepose.cn">
+                <h4>ILovePose(www.ilovepose.cn)</h4>
+            </a>
+
+        </p>
+        <table cellpadding="3 " cellspacing="0 " width="100% " class="sectionwhite ">
+
+        </table>
+    </section>
+
+
+
+    <div>
+        <hr>
+    </div>
+
+
+
+    <!-- <p class="MsoNormal " align="center " style="text-align:center ">
+        <a href="http://www.easycounter.com/ ">
+            <img src="http://www.easycounter.com/counter.php?welleast " border="0 " alt="HTML Hit Counters "></a>
+    </p> -->
+    <br>访问次数:
+    <img src="https://www.easycounter.com/counter.php?rock_andrew" border="0" alt="Free Web Counter">
+
+</body>
+
+</html>
