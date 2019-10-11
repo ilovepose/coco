@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="keywords" content="Distribution-Aware Coordinate Representation for Human Pose Estimation">
+    <meta name="description" content="Distribution-Aware Coordinate Representation for Human Pose Estimation">
+    <!--<link href="CSS/bootstrap.min.css" media="all" rel="stylesheet">-->
+    <link href="./DCAR_files/main.css" media="all" rel="stylesheet">
+    <title>Distribution-Aware Coordinate Representation for Human Pose Estimation</title>
+    <style>
+        font.italic {
+            font-style: italic;
+        }
+        
+        .isDisabled {
+            pointer-events: none;
+            cursor: default;
+            text-decoration: none;
+            color: black;
+        }
+        
+        .lightfont {
+            font-size: medium;
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <section id="headinformation" class="sectionwhite">
+        <table id="tbInformation" width="100%">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <h1>Distribution-Aware Coordinate Representation for Human Pose Estimation </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        Feng Zhang &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.eecs.qmul.ac.uk/~xiatian/" target="_blank">Xiatian Zhu</a> &nbsp;&nbsp;&nbsp; Hanbin Dai &nbsp;&nbsp;&nbsp;
+                        <a href="http://en.uestc.edu.cn/index.php?m=content&c=index&a=show&catid=79&id=5422" target="_blank">Mao Ye</a> &nbsp;&nbsp;&nbsp;
+                        <a href="http://www.avc2-lab.net/~eczhu/" target="_blank">Ce Zhu</a>&nbsp;&nbsp;&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <img src="./DCAR_files/DACR.png" border="12" height="200">
+                        <!--    <img src="images/Exchange.png" border="0" height="200">-->
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="Abstract" class="sectionwhite">
+        <h2> Abstract </h2>
+        <font size="normal">
+            <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+                <tbody>
+                    <tr>
+                        <td align="left">
+                            &nbsp;&nbsp;&nbsp;&nbsp; While being the <em>de facto</em> standard coordinate representation in human pose estimation, <em>heatmap</em> is never systematically investigated in the literature, to our best knowledge.
+                            </br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; This work fills this gap by studying the coordinate representation with a particular focus on the heatmap. Interestingly, we found that the process of <em>decoding</em> the predicted heatmaps into the
+                            final joint coordinates in the original image space is
+                            <em>surprisingly significant</em> for human pose estimation performance, which nevertheless was not recognised before. In light of the discovered importance, we further probe the design limitations of the standard coordinate
+                            decoding method widely used by existing methods, and propose a more principled distribution-aware decoding method. Meanwhile, we improve the standard coordinate <em> encoding </em> process (i.e. transforming ground-truth coordinates
+                            to heatmaps) by generating accurate heatmap distributions for unbiased model training. Taking the two together, we formulate a novel <em> Distribution-Aware Coordinate Representation </em> (DACR) method. Serving as a model-agnostic
+                            plug-in, DACR significantly improves the performance of a variety of state-of-the-art human pose estimation models.
+                            </br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; Extensive experiments show that DACR yields the best results on two common benchmarks, MPII and COCO, consistently validating the usefulness and effectiveness of our novel coordinate representation idea.
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td align="left">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We propose a high-resolution network (HRNet). The HRNet maintains high-resolution representations by connecting high-to-low resolution convolutions in parallel and strengthens high-resolution representations by repeatedly
+                            performing multi-scale fusions across parallel convolutions. We demonstrate the effectives on pixel-level classification, region-level classification, and image-level classification.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">
+                            <font color="blue">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The HRNet turns out to be a strong repalcement of classification networks (e.g., ResNets, VGGNets) for visual recognition. We believe that the HRNet will become the new standard backbone.
+                            </font>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </font>
+    </section>
+
+    <section id="COCO 2019 Keypoint Detection" class="sectionwhite">
+        <h2>COCO 2019 Keypoint Detection Challenge</h2>
+        <tr>
+            <td align="center">
+                Hanbin Dai* &nbsp;&nbsp;&nbsp; Liangbo Zhou* &nbsp;&nbsp;&nbsp; Feng Zhang* &nbsp;&nbsp;&nbsp; Hong Hu* &nbsp;&nbsp;&nbsp; Zhengyu Zhang* &nbsp;&nbsp;&nbsp;
+                <a href="http://www.eecs.qmul.ac.uk/~xiatian/" target="_blank">Xiatian Zhu*</a> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                <a href="http://en.uestc.edu.cn/index.php?m=content&c=index&a=show&catid=79&id=5422" target="_blank">Mao Ye</a>&nbsp;&nbsp;&nbsp;
+                <p align="left">
+                    <small>
+                        * means equal contribution
+                      </small>
+                </p>
+            </td>
+        </tr>
+
+        <p align="left">
+            We use DACR in the COCO 2019 Keypoint Detection Challenge. Our method achieve AP 78.9 on the COCO test-dev set and 76.4 on the COCO test-challenge set matching the performance of megavii's AP (The 2018 COCO champion)
+        </p>
+
+        <h2>Visualization</h2>
+        We give four types of conditions: images containing invisible joints, images containing low-resolution persons images having crowd scenes, images containing partial parts
+        <h3>Invisible joints</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/invisible/000000000202.jpg" target="_blank">
+                            <img src="./vis/invisible/000000000202.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/invisible/000000000202.jpg" target="_blank">
+                            <img src="./vis/invisible/000000539688.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/invisible/000000000202.jpg" target="_blank">
+                            <img src="./vis/invisible/000000546582.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/invisible/000000000202.jpg" target="_blank">
+                            <img src="./vis/invisible/000000568798.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+
+        <h3>Low resolution</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/low_res/000000550343.jpg" target="_blank">
+                            <img src="./vis/low_res/000000550343.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/low_res/000000539688.jpg" target="_blank">
+                            <img src="./vis/low_res/000000539688.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/low_res/000000546582.jpg" target="_blank">
+                            <img src="./vis/low_res/000000546582.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/low_res/000000550343.jpg" target="_blank">
+                            <img src="./vis/low_res/000000568798.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+
+        <h3>Crowd scene</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/crowd/000000001551.jpg" target="_blank">
+                            <img src="./vis/crowd/000000001551.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/crowd/000000122502.jpg" target="_blank">
+                            <img src="./vis/crowd/000000122502.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/crowd/000000555817.jpg" target="_blank">
+                            <img src="./vis/crowd/000000555817.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/crowd/000000567412.jpg" target="_blank">
+                            <img src="./vis/crowd/000000567412.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+
+        <h3>Low resolution</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/occlusion/000000023321.jpg" target="_blank">
+                            <img src="./vis/occlusion/000000023321.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/occlusion/000000539703.jpg" target="_blank">
+                            <img src="./vis/occlusion/000000539703.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/occlusion/000000541602.jpg" target="_blank">
+                            <img src="./vis/occlusion/000000541602.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/occlusion/000000546988.jpg" target="_blank">
+                            <img src="./vis/occlusion/000000546988.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+
+        <h3>Partial parts</h3>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <a href="./vis/partial/000000568601.jpg" target="_blank">
+                            <img src="./vis/partial/000000568601.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/partial/000000568601.jpg" target="_blank">
+                            <img src="./vis/partial/000000539703.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/partial/000000568601.jpg" target="_blank">
+                            <img src="./vis/partial/000000541602.jpg" border="12" height="150">
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="./vis/partial/000000568601.jpg" target="_blank">
+                            <img src="./vis/partial/000000546988.jpg" border="12" height="150">
+                        </a>
+                    </td>
+        </table>
+    </section>
+
+
+
+    <section id="Contact" class="sectionwhite">
+        <h3> Contact</h3>
+        <p align="left">
+            <a href="mailto:zhangfengwcy@gmail.com"> Feng Zhang</a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:eddy.zxt@gmail.com"> Xiatian Zhu</a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:eddy.zxt@gmail.com"> Hanbin Dai</a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:eddy.zxt@gmail.com"> Hong Hu</a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:eddy.zxt@gmail.com"> Liangbo </a> &nbsp;&nbsp;&nbsp;
+            <a href="mailto:eddy.zxt@gmail.com"> Hanbin Dai</a>
+
+        </p>
+        <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
+
+        </table>
+    </section>
+
+
+
+    <div>
+        <hr>
+    </div>
+
+
+
+    <!-- <p class="MsoNormal" align="center" style="text-align:center">
+        <a href="http://www.easycounter.com/">
+            <img src="http://www.easycounter.com/counter.php?welleast" border="0" alt="HTML Hit Counters"></a>
+    </p> -->
+
+
+
+
+
+
+</body>
+
+</html>
