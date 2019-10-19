@@ -14,14 +14,14 @@
         font.italic {
             font-style: italic;
         }
-
+        
         .isDisabled {
             pointer-events: none;
             cursor: default;
             text-decoration: none;
             color: black;
         }
-
+        
         .lightfont {
             font-size: medium;
             font-weight: normal;
@@ -47,10 +47,8 @@
                 <tr>
                     <td align="center">
                         Feng Zhang<sup>1</sup> &nbsp;&nbsp;&nbsp;
-                        <a href="https://xiatian-zhu.github.io" target="_blank">Xiatian Zhu<sup>2</sup></a>
-                        &nbsp;&nbsp;&nbsp; Hanbin Dai<sup>1</sup> &nbsp;&nbsp;&nbsp;
-                        <a href="http://en.uestc.edu.cn/index.php?m=content&c=index&a=show&catid=79&id=5422"
-                            target="_blank">Mao Ye<sup>1</sup></a> &nbsp;&nbsp;&nbsp;
+                        <a href="https://xiatian-zhu.github.io" target="_blank">Xiatian Zhu<sup>2</sup></a> &nbsp;&nbsp;&nbsp; Hanbin Dai<sup>1</sup> &nbsp;&nbsp;&nbsp;
+                        <a href="http://en.uestc.edu.cn/index.php?m=content&c=index&a=show&catid=79&id=5422" target="_blank">Mao Ye<sup>1</sup></a> &nbsp;&nbsp;&nbsp;
                         <a href="http://www.avc2-lab.net/~eczhu/" target="_blank">Ce
                             Zhu<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
 
@@ -105,29 +103,16 @@
                 <tbody>
                     <tr>
                         <td align="left">
-                            &nbsp;&nbsp;&nbsp;&nbsp; While being the <em>de facto</em> standard coordinate
-                            representation in human pose estimation, <em>heatmap</em> is never systematically
-                            investigated in the literature, to our best knowledge.
+                            &nbsp;&nbsp;&nbsp;&nbsp; While being the <em>de facto</em> standard coordinate representation in human pose estimation, <em>heatmap</em> is never systematically investigated in the literature, to our best knowledge.
                             </br>
-                            &nbsp;&nbsp;&nbsp;&nbsp; This work fills this gap by studying the coordinate representation
-                            with a particular focus on the heatmap. Interestingly, we found that the process of
-                            <em>decoding</em> the predicted heatmaps into the final joint coordinates in the original
-                            image space is
-                            <em>surprisingly significant</em> for human pose estimation performance, which nevertheless
-                            was not recognised before. In light of the discovered importance, we further probe the
-                            design limitations of the standard coordinate
-                            decoding method widely used by existing methods, and propose a more principled
-                            distribution-aware decoding method. Meanwhile, we improve the standard coordinate <em>
-                                encoding </em> process (i.e. transforming ground-truth coordinates to heatmaps) by
-                            generating accurate heatmap distributions for unbiased model training. Taking the two
-                            together, we formulate a novel <em> Distribution-Aware coordinate
-                                Representation of Keypoint </em> (DARK) method. Serving as a model-agnostic plug-in,
-                            DARK significantly improves the performance of a variety of state-of-the-art human pose
-                            estimation models.
+                            &nbsp;&nbsp;&nbsp;&nbsp; This work fills this gap by studying the coordinate representation with a particular focus on the heatmap. Interestingly, we found that the process of
+                            <em>decoding</em> the predicted heatmaps into the final joint coordinates in the original image space is
+                            <em>surprisingly significant</em> for human pose estimation performance, which nevertheless was not recognised before. In light of the discovered importance, we further probe the design limitations of the standard coordinate
+                            decoding method widely used by existing methods, and propose a more principled distribution-aware decoding method. Meanwhile, we improve the standard coordinate <em>
+                                encoding </em> process (i.e. transforming ground-truth coordinates to heatmaps) by generating accurate heatmap distributions for unbiased model training. Taking the two together, we formulate a novel <em> Distribution-Aware coordinate
+                                Representation of Keypoint </em> (DARK) method. Serving as a model-agnostic plug-in, DARK significantly improves the performance of a variety of state-of-the-art human pose estimation models.
                             </br>
-                            &nbsp;&nbsp;&nbsp;&nbsp; Extensive experiments show that DARK yields the best results on two
-                            common benchmarks, MPII and COCO, consistently validating the usefulness and effectiveness
-                            of our novel coordinate representation idea.
+                            &nbsp;&nbsp;&nbsp;&nbsp; Extensive experiments show that DARK yields the best results on two common benchmarks, MPII and COCO, consistently validating the usefulness and effectiveness of our novel coordinate representation idea.
                             <!-- <b><p>&nbsp;&nbsp;&nbsp;&nbsp;We will release the paper, training and testing code and the pretrained model at GitHub.</p></b> -->
                             <!-- <b><p>&nbsp;&nbsp;&nbsp;&nbsp;Our CVPR2019 work <em>Fast Human Pose Estimation</em> can work seamlessly with DARK, which is available at<a href="https://github.com/ilovepose/fast-human-pose-estimation.pytorch"> GitHub</a>. -->
                             </p>
@@ -189,21 +174,18 @@
             <table cellpadding=3 cellspacing=0 width="100%" class="sectionwhite">
                 <tr>
                     <td>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We will release the training and testing code and the pretrained
-                        model at GitHub.
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We will release the training and testing code and the pretrained model at GitHub.
                         </br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Our CVPR2019 work <em>Fast Human Pose Estimation</b></em> can
-                        work seamlessly with <b><em>DARK</em></b>, which is available at<a
-                            href="https://github.com/ilovepose/fast-human-pose-estimation.pytorch"> GitHub</a>.
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Our CVPR2019 work <em>Fast Human Pose Estimation</b></em> can work seamlessly with <b><em>DARK</em></b>, which is available at<a href="https://github.com/ilovepose/fast-human-pose-estimation.pytorch"> GitHub</a>.
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
             </table>
         </font>
     </section>
@@ -215,13 +197,11 @@
             <h2 style="text-align: center;">COCO 2019 Keypoint Detection Challenge</h2>
             <td>
                 <p align="center">
-                    Hanbin Dai<sup>1</sup>* &nbsp;&nbsp;&nbsp; Liangbo Zhou<sup>1</sup>* &nbsp;&nbsp;&nbsp; Feng
-                    Zhang<sup>1</sup>* &nbsp;&nbsp;&nbsp; Zhengyu Zhang<sup>2</sup>* &nbsp;&nbsp;&nbsp; Hong
-                    Hu<sup>1</sup>* &nbsp;&nbsp;&nbsp;
-                    <a href="http://www.eecs.qmul.ac.uk/~xiatian/" target="_blank">Xiatian Zhu<sup>3</sup>*</a>
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                    <a href="http://en.uestc.edu.cn/index.php?m=content&c=index&a=show&catid=79&id=5422"
-                        target="_blank">Mao Ye<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
+                    Hanbin Dai<sup>1</sup>* &nbsp;&nbsp;&nbsp; Liangbo Zhou<sup>1</sup>* &nbsp;&nbsp;&nbsp; Feng Zhang
+                    <sup>1</sup>* &nbsp;&nbsp;&nbsp; Zhengyu Zhang<sup>2</sup>* &nbsp;&nbsp;&nbsp; Hong Hu
+                    <sup>1</sup>* &nbsp;&nbsp;&nbsp;
+                    <a href="http://www.eecs.qmul.ac.uk/~xiatian/" target="_blank">Xiatian Zhu<sup>3</sup>*</a> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                    <a href="http://en.uestc.edu.cn/index.php?m=content&c=index&a=show&catid=79&id=5422" target="_blank">Mao Ye<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
                 </p>
                 <p align="center">
                     <small>
@@ -235,18 +215,14 @@
         </tr>
 
         <p align="left">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We use DARK in the COCO 2019 Keypoint Detection Challenge. Our method achieve
-            AP <b><a href="https://competitions.codalab.org/competitions/12061#results">78.9</a></b> on the COCO
-            test-dev set (Top-1 in the test-dev
-            leaderboard by 12 Oct 2019) and <b>76.4</b> on the COCO test-challenge set matching the performance of
-            Megvii's AP (the 2018 COCO champion).
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We use DARK in the COCO 2019 Keypoint Detection Challenge. Our method achieve AP <b><a href="https://competitions.codalab.org/competitions/12061#results">78.9</a></b> on the COCO test-dev set (Top-1 in the test-dev
+            leaderboard by 12 Oct 2019) and <b>76.4</b> on the COCO test-challenge set matching the performance of Megvii's AP (the 2018 COCO champion).
         </p>
 
         Technical report is <a href="papers/DARK_Pose_TR.pdf">here.</a>
 
         <h3>Visualization</h3>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We give four types of challenges: images containing invisible joints, images
-        containing low-resolution persons, images having crowd scenes, images containing partial parts.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We give four types of challenges: images containing invisible joints, images containing low-resolution persons, images having crowd scenes, images containing partial parts.
         <h3>Invisible joints</h3>
         <table cellpadding="3" cellspacing="0" width="100%" class="sectionwhite">
             <tbody>
@@ -361,7 +337,7 @@
             <tr>
                 <td>
                     <pre><code>
-@misc{feng2020,
+@misc{feng2019,
     author = {Feng Zhang and Xiatian Zhu and Hanbin Dai and Mao Ye and Ce Zhu},
     title = {Distribution-Aware Coordinate Representation for Human Pose Estimation},
     year = {2019},
